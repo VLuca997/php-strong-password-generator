@@ -21,9 +21,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/framework.css">
-    <link rel="stylesheet" href="css/general.css">
-    <link rel="stylesheet" href="css/mediaquery.css">
+    
     <link rel="stylesheet" href="css/style.css">
 
     
@@ -31,26 +29,31 @@
 <body id="debug">
 
 
+    <div class="container">
+    <?php 
+    var_dump($_GET)
+    
+    ?>
+        
 
+            <h1 class="text-center">PASSWORD GENERATOR</h1>
 
-    <!-- HEADER -->
-    <header>
-        HEADER
-    </header>
+            <div class="row ">
 
+                <div class="col">
 
+                    <form action="" method="GET">
 
-    <!-- MAIN -->
-    <main>
-        MAIN
-    </main>
-
-
-
-    <!-- FOOTER -->
-    <footer>
-        FOOTER
-    </footer>
+                        <div class="d-flex justify-content-center flex-column">
+                            <label for="pass-length" class="form-label">insierisci la lunghezza della password da generare</label>
+                            <input type="number" name="pass-length" min="5" class="forn-control w-25" id="pass-length" placeholder="inserisci un minimo di 5 caratteri" required>
+                        </div>
+                        <button type="submit"> Generate password</button>
+                    </form>
+                </div>
+            </div>
+        
+    </div>
 
 
 
