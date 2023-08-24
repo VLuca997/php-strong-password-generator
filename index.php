@@ -33,21 +33,21 @@
 
     <?php 
 
-        var_dump($_GET);
+        // var_dump($_GET);
 
         if (isset($_GET['pass-length'])){
             $passLength = intval($_GET['pass-length']);
-            var_dump($passLength);
+            // var_dump($passLength);
             $Database =  'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_';
             $password = '';
 
 
             for($i = 0; $i < $passLength; $i++){
                 $randomChar = $Database[rand(0, strlen($Database) -1)];
-                var_dump($randomChar);
+                // var_dump($randomChar);
                 $password .= $randomChar;
             }
-            var_dump($password);
+            // var_dump($password);
         };
     ?>
         
@@ -68,7 +68,13 @@
                     </form>
                 </div>
             </div>
-        
+            <div>
+                <?php 
+                    if (isset($_GET['pass-length'])){
+                ?>
+                    La tua password è: <?php echo $password?>
+                <?php }?>
+            </div>
     </div>
 
 
