@@ -30,27 +30,21 @@
 
 
     <div class="container">
-
+    
+    <!-- ------------------------------------------------------------PHP -->
     <?php 
-
+    require_once __DIR__ . '/partials/function.php';
         // var_dump($_GET);
 
-        if (isset($_GET['pass-length'])){
+        if (isset($_GET['pass-length'])){//pass-length passato dall'html
             $passLength = intval($_GET['pass-length']);
             // var_dump($passLength);
-            $Database =  'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_';
-            $password = '';
-
-
-            for($i = 0; $i < $passLength; $i++){
-                $randomChar = $Database[rand(0, strlen($Database) -1)];
-                // var_dump($randomChar);
-                $password .= $randomChar;
-            }
-            // var_dump($password);
+            $password = generateRandomPass($passLength);
         };
     ?>
-        
+
+
+    <!-- ------------------------------------------------------------END PHP -->  
 
             <h1 class="text-center">PASSWORD GENERATOR</h1>
 
@@ -61,19 +55,22 @@
                     <form action="" method="GET">
 
                         <div class="d-flex justify-content-center flex-column">
-                            <label for="pass-length" class="form-label">insierisci la lunghezza della password da generare</label>
-                            <input type="number" name="pass-length" min="5" class="forn-control w-25" id="pass-length" placeholder="inserisci un minimo di 5 caratteri" required>
+                            <label for="pass-length" class="form-label">insierisci la lunghezza della password da generare</label> 
+                            <input type="number" name="pass-length" min="5" max="100" class="forn-control w-25" id="pass-length" placeholder="Minimo 5,Massimo 100" required><!-- name= "pass-length"-->
                         </div>
                         <button type="submit"> Generate password</button>
                     </form>
                 </div>
             </div>
             <div>
+                <!-- ------------------------------------------------------------PHP -->
                 <?php 
-                    if (isset($_GET['pass-length'])){
+                    if (isset($_GET['pass-length'])){ // SE SI VERIFICA QUESTA CONDIZIONE ALLORA SI GENERERà L'HTML DENTRO QUESTA FUNZIONE PHP SMEZZATA IN 2 SCRITTURE PHP, SENNO SE NO NMETTIAMO QUESTO IF CI DA ERRORE SE SVUOTIAMO I CAMPI/(URL PER PROVA.)
                 ?>
-                    La tua password è: <?php echo $password?>
+                    La password generata da<strong class="fw-bolder text-danger"> <?php echo $passLength?></strong> caratteri è:<strong class="fw-bolder text-danger"> <?php echo $password?></strong>
                 <?php }?>
+                <!-- ------------------------------------------------------------END PHP -->
+
             </div>
     </div>
 
